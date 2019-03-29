@@ -23,6 +23,8 @@ public class ShipControl : MonoBehaviour
         meshship.transform.localRotation = Quaternion.Euler(rotation * 30);
 
         transform.Translate(movement * Time.deltaTime * 40);
+
+        transform.localPosition = Vector3.Lerp(transform.localPosition, Vector3.zero, Time.deltaTime);
     }
 
 }
