@@ -7,6 +7,9 @@ public class ShipControl : MonoBehaviour
 
     Vector3 movement, rotation;
     public GameObject meshship;
+
+    public float shipLives = 3;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +28,17 @@ public class ShipControl : MonoBehaviour
         transform.Translate(movement * Time.deltaTime * 40);
 
         transform.localPosition = Vector3.Lerp(transform.localPosition, Vector3.zero, Time.deltaTime);
+    }
+
+    private void OnParticleCollision(GameObject other)
+    {
+        shipLives--;
+        Debug.Log("Remaining lives: " + shipLives);
+
+        if(shipLives <= 0)
+        {
+            Debug.Log("Ded");
+        }
     }
 
 }

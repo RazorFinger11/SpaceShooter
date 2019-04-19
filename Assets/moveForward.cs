@@ -7,7 +7,7 @@ public class moveForward : MonoBehaviour
     public GameObject wayfather;
     Transform[] ways;
     public int index = 1;
-    public float velocity = 10;
+    public float[] velocity;
     Vector3 oldpos;
     Quaternion oldrot;
     // Start is called before the first frame update
@@ -23,7 +23,7 @@ public class moveForward : MonoBehaviour
     {
 
         transform.position = Vector3.MoveTowards
-            (transform.position, ways[index].transform.position, Time.deltaTime * velocity);
+            (transform.position, ways[index].transform.position, Time.deltaTime * velocity[index]);
 
 
         Vector3 direction = ways[index].transform.position - transform.position;
