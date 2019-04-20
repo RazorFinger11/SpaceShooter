@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\CameraLook.cs" />
+    <Compile Include="Assets\enemyBehaviour.cs" />
     <Compile Include="Assets\moveBullet.cs" />
     <Compile Include="Assets\moveForward.cs" />
     <Compile Include="Assets\Scripts\ShipControl.cs" />
