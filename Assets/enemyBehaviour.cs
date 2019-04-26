@@ -29,6 +29,9 @@ public class enemyBehaviour : MonoBehaviour
     {
         if (active)
         {
+
+            Debug.Log(Vector3.Distance(transform.position, target.position));
+
             float distCovered = (Time.time - startTime) * movesSpeed;
 
             float fracJourney = distCovered / journeyLength;
@@ -87,7 +90,8 @@ public class enemyBehaviour : MonoBehaviour
             }
         }
 
-        if (transform.position == target.position)
+
+        if (Vector3.Distance(transform.position, target.position) <= 12.5f)
             Destroy(this.gameObject);
     }
 
@@ -102,5 +106,15 @@ public class enemyBehaviour : MonoBehaviour
 
             active = true;
         }
+
+        if(other.gameObject.tag == "EnemyTarget")
+        {
+            //Destroy(this.gameObject);
+        }
+    }
+
+    private void OnParticleCollision(GameObject other)
+    {
+        Destroy(this.gameObject);
     }
 }

@@ -47,4 +47,31 @@ public class playerHealth : MonoBehaviour
             
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+       
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+            Destroy(other.transform.parent.gameObject);
+            Debug.Log("hit evil man");
+            health--;
+            if (health == 0)
+            {
+                animator.SetTrigger("FadeOUT");
+                SceneManager.LoadScene("SkyShooter");
+
+            }
+        }
+
+        if (other.gameObject.tag == "EndTrigger")
+        {
+            Debug.Log("are we even here");
+            animator.SetTrigger("FadeOUT");
+        }
+    }
 }
