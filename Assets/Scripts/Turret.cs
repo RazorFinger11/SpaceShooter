@@ -8,6 +8,8 @@ public class Turret : MonoBehaviour
     GameObject target;
     public ParticleSystem weapon;
     bool work = false;
+    public AudioSource explosionSound;
+    public AudioSource fireSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +31,9 @@ public class Turret : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
+        explosionSound.Play();
         Destroy(gameObject);
+        
     }
 
     private void OnTriggerEnter(Collider other)

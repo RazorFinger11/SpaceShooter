@@ -16,6 +16,7 @@ public class enemyBehaviour : MonoBehaviour
     public Transform startPatrol;
     public Transform endPatrol;
     private float curRoute = 0;
+    public AudioSource explosion;
     // Start is called before the first frame update
     void Start()
     {
@@ -115,6 +116,8 @@ public class enemyBehaviour : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
+        explosion.Play();
         Destroy(this.gameObject);
+        
     }
 }
