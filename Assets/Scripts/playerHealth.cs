@@ -14,9 +14,9 @@ public class playerHealth : MonoBehaviour
     public Sprite fullBar;
     public Sprite emptyBar;
     public Animator animator;
-    
+    public AudioSource source;
+    public AudioClip lastLife;
 
-  
 
     private void Update()
     {
@@ -40,6 +40,12 @@ public class playerHealth : MonoBehaviour
         health--;
 
 
+        if (health == 1)
+        {
+            Debug.Log("Die");
+            source.PlayOneShot(lastLife, 1.2f);
+        }
+
         if (health == 0)
         {
             animator.SetTrigger("FadeOUT");
@@ -60,6 +66,12 @@ public class playerHealth : MonoBehaviour
             Destroy(other.transform.parent.gameObject);
             Debug.Log("hit evil man");
             health--;
+
+            if(health == 1)
+            {
+                Debug.Log("Die");
+                source.PlayOneShot(lastLife, 0.85f);
+            }
             if (health == 0)
             {
                 animator.SetTrigger("FadeOUT");
@@ -72,6 +84,7 @@ public class playerHealth : MonoBehaviour
         {
             Debug.Log("are we even here");
             animator.SetTrigger("FadeOUT");
+
         }
     }
 }
